@@ -1,0 +1,37 @@
+.hello {
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  font-size: 48px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border: 1px solid #bdbdbd;
+  background: var(--light-grey);
+  border-radius: 5px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.hello button {
+  box-sizing: border-box;
+  margin-left: 25px;
+  margin-right: 25px;
+  font-size: 40px;
+  min-width: 50px;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  box-shadow: none;
+  background: #f5f5f5;
+}
+
+.hello button:active {
+  animation: clicked 1s ease 0s 1 forwards;
+}
+
+@keyframes clicked {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
