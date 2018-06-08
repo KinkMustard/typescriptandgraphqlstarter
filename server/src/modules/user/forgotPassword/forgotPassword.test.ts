@@ -1,5 +1,5 @@
 import faker from "faker";
-import Redis from "ioredis";
+// import Redis from "ioredis";
 import { Connection } from "typeorm";
 
 import { default as User } from "../../../entity/User";
@@ -12,7 +12,7 @@ import { passwordNotLongEnough } from "../register/errorMessages";
 import { expiredKeyError } from "./errorMessages";
 
 let conn: Connection;
-export const redis = new Redis();
+// export const redis = new Redis();
 faker.seed(Date.now() + 0);
 const email = faker.internet.email();
 const password = faker.internet.password();
@@ -21,7 +21,7 @@ const newPassword = faker.internet.password();
 let userId: string;
 beforeAll(async () => {
   conn = await createTestConn();
-  const user = await User.create({
+  const user = await new User({
     email,
     password,
     confirmed: true

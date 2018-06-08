@@ -5,6 +5,7 @@
   "devDependencies": {
     "@types/graphql": "^0.13.1",
     "@types/react-router-dom": "^4.2.7",
+    "@types/redux-form": "^7.2.6",
     "@types/webpack-env": "^1.13.6",
     "react-addons-test-utils": "^15.6.2",
     "react-scripts-ts": "2.16.0",
@@ -13,26 +14,39 @@
   "dependencies": {
     "@material-ui/core": "^1.2.0",
     "@material-ui/icons": "^1.1.0",
+    "@types/classnames": "^2.2.4",
     "@types/enzyme": "^3.1.10",
+    "@types/history": "^4.6.2",
     "@types/jest": "^22.2.3",
     "@types/node": "^10.1.4",
     "@types/prop-types": "^15.5.3",
     "@types/react": "^16.3.14",
     "@types/react-dom": "^16.0.5",
     "@types/react-redux": "^6.0.0",
+    "@types/react-router-redux": "^5.0.15",
+    "@types/redux": "^3.6.31",
+    "@types/redux-devtools-extension": "^2.13.2",
+    "@types/redux-thunk": "^2.1.0",
     "apollo-boost": "^0.1.7",
     "apollo-client": "^2.3.2",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
+    "classnames": "^2.2.5",
     "enzyme": "^3.3.0",
     "graphql": "^0.13.2",
+    "history": "^4.7.2",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-apollo": "^2.1.4",
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
-    "redux": "^4.0.0",
+    "react-router-redux": "^4.0.8",
+    "redux": "3.7.2",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-form": "^7.3.0",
+    "redux-form-material-ui": "^5.0.0-beta.3",
+    "redux-thunk": "^2.3.0",
     "typescript": "^2.8.4"
   },
   "scripts": {
@@ -41,6 +55,6 @@
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",
     "generate": "gql-gen --url http://localhost:3000/graphql --template ts --out ./src/types.d.ts",
-    "gen-types": "apollo-codegen introspect-schema http://localhost:5000/graphql --output schema.json && apollo-codegen generate src/**/*.tsx --schema schema.json --target typescript --output src/operation-result-types.tsx"
+    "gen-types": "apollo-codegen introspect-schema http://localhost:4000 --output schema.json && apollo-codegen generate src/**/*.tsx --schema schema.json --target typescript --output src/operation-result-types.tsx"
   }
 }

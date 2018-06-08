@@ -1,58 +1,57 @@
 import { gql } from "apollo-boost";
 
-const getAuthors = gql`
-  query getAuthors {
-    authors {
-      name
-      id
+// const getAuthors = gql`
+//   query getAuthors {
+//     authors {
+//       name
+//       id
+//     }
+//   }
+// `;
+
+// const getBooks = gql`
+//   query getBooks {
+//     books {
+//       name
+//       id
+//     }
+//   }
+// `;
+
+const login = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      path
+      message
     }
   }
 `;
 
-const getBooks = gql`
-  query getBooks {
-    books {
-      name
-      id
+const register = gql`
+  mutation register($email: String!, $password: String!) {
+    register(email: $email, password: $password) {
+      message
     }
   }
 `;
 
-const addBook = gql`
-  mutation addBook($name: String!, $genre: String!, $authorId: ID!) {
-    addBook(name: $name, genre: $genre, authorId: $authorId) {
-      name
-      id
-    }
-  }
-`;
+// const getBook = gql`
+//   query getBook($id: ID) {
+//     book(id: $id) {
+//       id
+//       name
+//       genre
+//       author {
+//         id
+//         name
+//         age
+//         books {
+//           name
+//           id
+//         }
+//       }
+//     }
+//   }
+// `;
 
-const addAuthor = gql`
-  mutation addAuthor($name: String!, $age: Int!) {
-    addAuthor(name: $name, age: $age) {
-      name
-      age
-    }
-  }
-`;
-
-const getBook = gql`
-  query getBook($id: ID) {
-    book(id: $id) {
-      id
-      name
-      genre
-      author {
-        id
-        name
-        age
-        books {
-          name
-          id
-        }
-      }
-    }
-  }
-`;
-
-export { getAuthors, getBooks, addBook, getBook };
+export { login, register };

@@ -76,7 +76,7 @@ export const startServer = async () => {
   server.express.use(
     session({
       resave: true,
-      saveUninitialized: true,
+      saveUninitialized: false,
       secret: SESSION_SECRET,
       store: new MongoStore({
         url: mongoUrl,

@@ -5,8 +5,12 @@ import middleware from "./middleware";
 
 export const resolvers: ResolverMap = {
   Query: {
-    me: createMiddleware(middleware, (_, __, { session }) =>
-      User.findOne({ where: { id: session.userId } })
-    )
+    findUser: async (_, { email }: GQL.ILoginOnMutationArguments) => {
+      const user = await User.findOne({
+        email
+      });
+
+      return user;
+    }
   }
 };

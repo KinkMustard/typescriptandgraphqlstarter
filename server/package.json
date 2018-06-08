@@ -53,6 +53,7 @@
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.3",
     "compression": "^1.7.2",
+    "concurrently": "^3.5.1",
     "connect-mongo": "^2.0.1",
     "connect-redis": "^3.3.3",
     "cors": "^2.8.4",
@@ -90,9 +91,10 @@
     "yup": "^0.25.1"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=development & nodemon --exec ts-node src/index.ts",
+    "startServer": "cross-env NODE_ENV=development & nodemon --exec ts-node src/index.ts",
     "test": "cross-env NODE_ENV=test & jest --watch",
-    "gen-schema-types": "ts-node src/scripts/createTypes.ts"
+    "gen-schema-types": "ts-node src/scripts/createTypes.ts",
+    "dev": "concurrently \"npm run startServer\" \"npm run start --prefix ../client\""
   },
   "jest": {
     "globalSetup": "./src/testUtils/callSetup.js",

@@ -37,8 +37,7 @@ export const resolvers: ResolverMap = {
       const { email, password } = args;
 
       const userAlreadyExists = await User.findOne({
-        where: { email },
-        select: ["id"]
+        email
       });
 
       if (userAlreadyExists) {

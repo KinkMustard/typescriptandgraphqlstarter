@@ -22,16 +22,3 @@
   box-shadow: none;
   background: #f5f5f5;
 }
-
-.hello button:active {
-  animation: clicked 1s ease 0s 1 forwards;
-}
-
-@keyframes clicked {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
