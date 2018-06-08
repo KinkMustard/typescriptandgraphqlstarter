@@ -12,7 +12,8 @@ const reducer: Reducer<UserState> = (
 ) => {
   switch ((action as UserActions).type) {
     case SET_USER:
-      return { ...state, email: state.email };
+      console.log(action);
+      return { ...state, email: action.payload.email };
     default:
       return state;
   }

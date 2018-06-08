@@ -4,7 +4,5 @@ import { SetUser, UserState } from "./types";
 
 export const setUser: ActionCreator<SetUser> = (user: UserState) => ({
   type: constants.SET_USER,
-  payload: {
-    user
-  }
+  payload: user
 });

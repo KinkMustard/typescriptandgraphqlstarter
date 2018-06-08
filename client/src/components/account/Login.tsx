@@ -171,8 +171,7 @@ class Login extends React.Component<AllProps> {
       }
     });
 
-    console.log(message);
-    if (!message.data) {
+    if (!message.data.login) {
       this.props.setUser({ email: values.email });
       this.props.history.push("/");
     } else {
@@ -255,7 +254,7 @@ const validate = values => {
 const mapStateToProps = (state: ApplicationState) => state.user;
 const mapDispatchToProps = (dispatch: Dispatch<UserActions>) => {
   return {
-    setUser: () => dispatch(setUser())
+    setUser: email => dispatch(setUser(email))
   };
 };
 

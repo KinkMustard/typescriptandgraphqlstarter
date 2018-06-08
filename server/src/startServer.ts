@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import compression from "compression";
 import mongo from "connect-mongo";
 import connectRedis from "connect-redis";
+import cookieSession from "cookie-session";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
@@ -25,7 +26,12 @@ import { confirmEmail } from "./routes/confirmEmail";
 import { createTestConn } from "./testUtils/createTestConn";
 import { createTypeormConn } from "./utils/createTypeormConn";
 import { genSchema } from "./utils/genSchema";
-import { MONGODB_URI, MONGODB_URI_TEST, SESSION_SECRET } from "./utils/secrets";
+import {
+  COOKIE_KEY,
+  MONGODB_URI,
+  MONGODB_URI_TEST,
+  SESSION_SECRET
+} from "./utils/secrets";
 
 dotenv.config({ path: ".env" });
 // const RedisStore = connectRedis(session);
@@ -73,15 +79,22 @@ export const startServer = async () => {
   //   })
   // );
 
+  // server.express.use(
+  //   session({
+  //     resave: true,
+  //     saveUninitialized: false,
+  //     secret: SESSION_SECRET,
+  //     store: new MongoStore({
+  //       url: mongoUrl,
+  //       autoReconnect: true
+  //     })
+  //   })
+  // );
   server.express.use(
-    session({
-      resave: true,
-      saveUninitialized: false,
-      secret: SESSION_SECRET,
-      store: new MongoStore({
-        url: mongoUrl,
-        autoReconnect: true
-      })
+    cookieSession({
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+      keys: [COOKIE_KEY],
+      name: "Login session"
     })
   );
   server.express.use(cors());

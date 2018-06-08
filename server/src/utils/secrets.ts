@@ -16,6 +16,7 @@ logger.debug("enviroment", process.env.SESSION_SECRET);
 const prod = ENVIRONMENT === "production"; // Anything else is treated as 'dev'
 
 export const SESSION_SECRET = process.env["SESSION_SECRET"];
+export const COOKIE_KEY = process.env["COOKIE_KEY"];
 export const MONGODB_URI_TEST = process.env["MONGODB_URI_TEST"];
 export const MONGODB_URI = prod
   ? process.env["MONGODB_URI"]

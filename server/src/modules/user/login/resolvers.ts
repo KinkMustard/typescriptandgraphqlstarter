@@ -30,24 +30,6 @@ export const resolvers: ResolverMap = {
         return errorResponse;
       }
 
-      if (!user.confirmed) {
-        return [
-          {
-            path: "email",
-            message: confirmEmailError
-          }
-        ];
-      }
-
-      if (user.forgotPasswordLocked) {
-        return [
-          {
-            path: "email",
-            message: forgotPasswordLockedError
-          }
-        ];
-      }
-
       const valid = await bcrypt.compare(password, user.password);
 
       if (!valid) {
